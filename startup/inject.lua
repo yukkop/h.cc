@@ -18,13 +18,13 @@ local url = "https://raw.githubusercontent.com/yukkop/h.cc/master/startup/dg.lua
 local response = http.get(url)
 
 if response then
-local content = response.readAll()
-local file = fs.open("/.bin/dg.lua", "w")
-file.write(content)
-file.close()
-print("File dg.lua downloaded successfully: " .. savePath)
+    local content = response.readAll()
+    local file = fs.open("/.bin/dg.lua", "w")
+    file.write(content)
+    file.close()
+    print("File dg.lua downloaded successfully")
 else
-print("Failed to download file dg.lua.")
+    print("Failed to download file dg.lua.")
 end
 
 
