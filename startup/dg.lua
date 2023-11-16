@@ -22,15 +22,15 @@ local function downloadFromGitHub(repo, filePath, savePath, branch)
 end
 
 -- Main
-local priogramname = arg[0] or "script"
+local programname = arg[0] or "script"
 local args = {...}
 local branch
 
 
 -- TODO improve args system becouse it is suck
 -- Check for help argument
-if #args < 3 or args[1] == "--help" or args[1] == "-h"
-    displayHelp(priogramname)
+if #args < 3 or args[1] == "--help" or args[1] == "-h" then
+    displayHelp(programname)
     return
 end
 
