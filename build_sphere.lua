@@ -59,7 +59,7 @@ refillFuel()
 
 local args = {...}
 -- Set the radius of the sphere
-local sphereRadius = args[1].tonumber()
+local sphereRadius = tonumber(args[1])
 
 -- Build the sphere
 buildSphere(sphereRadius)
