@@ -1,2 +1,4 @@
 pagger.lua
 cat.lua
+ls.lua
+pwd.lua
