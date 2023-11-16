@@ -37,5 +37,5 @@ local dir = "/.bin/"
 
 local files = listFiles(dir)
 for _, file in ipairs(files) do
-    shell.setAlias(getFileName(splitByPeriod(file)), file)
+    shell.setAlias(splitByPeriod(getFileName(file))[1], file)
 end
