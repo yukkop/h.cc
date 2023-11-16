@@ -1,31 +1,18 @@
 -- Function to build a sphere using an octree algorithm
-function buildSphere(radius)
-    local function recurse(x, y, z, size)
-        local distance = math.sqrt(x^2 + y^2 + z^2)
+function build_upper_sphere(radius)
+    local diameter = radius * 2
 
-        if distance <= radius then
-            turtle.select(1) 
-            turtle.digDown()
-            turtle.placeDown()
-        end
-
-        if size > 1 then
-            local newSize = size / 2
-            recurse(x - newSize, y, z, newSize)
-            recurse(x + newSize, y, z, newSize)
-            recurse(x, y - newSize, z, newSize)
-            recurse(x, y + newSize, z, newSize)
-            recurse(x, y, z - newSize, newSize)
-            recurse(x, y, z + newSize, newSize)
+    for x = -radius, radius do
+        for y = -radius, radius do
+            local decision = x*x + y*y - radius*radius + (1 - radius)
+            if decision <= 0 then
+                local z = math.sqrt(radius * radius - x * x - y * y)
+                turtle.up(z)
+                turtle.placeDown()
+                turtle.down(z)
+            end
         end
     end
-
-    -- Move the turtle to the starting position
-    turtle.up()
-    turtle.forward()
-
-    -- Build the sphere using the octree algorithm
-    recurse(0, 0, 0, radius)
 end
 
 function refillFuel()
@@ -62,4 +49,4 @@ local args = {...}
 local sphereRadius = tonumber(args[1])
 
 -- Build the sphere
-buildSphere(sphereRadius)
+build_upper_sphere(sphereRadius)
