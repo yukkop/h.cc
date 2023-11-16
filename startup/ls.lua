@@ -57,16 +57,19 @@ for i, arg in ipairs(args) do
 	end
 
 	table.insert(options, short_option)
-    else if string.sub(arg, 1, 1) == "-" then
-        local options_string = string.sub(arg, 2)
-	local short_options = splitIntoChars(options_string)
-	for _, short_option in ipairs(short_options) do
-	    table.insert(options, short_option)
+    else
+	if string.sub(arg, 1, 1) == "-" then
+            local options_string = string.sub(arg, 2)
+	    local short_options = splitIntoChars(options_string)
+	    for _, short_option in ipairs(short_options) do
+	        table.insert(options, short_option)
+	    end
 	end
     end
 end
 
 if option.find("a") == nil then -- --all
+    print("option a")
 end
 
 local dir = shell.dir()
