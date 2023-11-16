@@ -68,7 +68,7 @@ for i, arg in ipairs(args) do
     end
 end
 
-if option.find("a") == nil then -- --all
+if options.find("a") == nil then -- --all
     print("option a")
 end
 
