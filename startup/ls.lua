@@ -68,7 +68,19 @@ for i, arg in ipairs(args) do
     end
 end
 
-if options.find("a") == nil then -- --all
+
+-- Function to find a value in the map
+local function ifShortExist(map, targetValue)
+    for key, value in pairs(map) do
+        if value.short == targetValue then
+            return true
+        end
+    end
+    return false
+end
+
+
+if findInMap(options, "a") == nil then -- --all
     print("option a")
 end
 
