@@ -53,4 +53,6 @@ runCommand("rm /bins");
 runCommand("rm /startup.lua");
 runCommand("dg yukkop/h.cc startup/startup.lua /startup.lua");
 
+print("Press enter to reboot")
+local input = read()
 runCommand("reboot");
