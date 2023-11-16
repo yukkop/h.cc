@@ -39,6 +39,7 @@ if file then
 	
         if fs.exists("/.bin/" .. line) then
             runCommand("rm /.bin/" .. line);
+	    print("Removed old " .. line)
 	end
 	runCommand("/.bin/dg.lua yukkop/h.cc startup/" .. line .. " /.bin/" .. line);
     end
@@ -51,6 +52,7 @@ runCommand("rm /bins");
 
 if fs.exists("/startup.lua") then
     runCommand("rm /startup.lua");
+    print("Removed old startup.lua")
 end
 runCommand("/.bin/dg.lua yukkop/h.cc startup/startup.lua /startup.lua");
 
