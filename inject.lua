@@ -50,7 +50,7 @@ end
 
 runCommand("rm /bins");
 
-if fs.exists("/startup.lua" .. line) then
+if fs.exists("/startup.lua") then
     runCommand("rm /startup.lua");
 end
 runCommand("dg yukkop/h.cc startup/startup.lua /startup.lua");
