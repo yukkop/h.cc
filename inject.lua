@@ -28,8 +28,7 @@ else
 end
 
 
-runCommand("cd /.bin/");
-runCommand("dg yukkop/h.cc startup/bins /bins");
+runCommand("/.bin/dg.lua yukkop/h.cc startup/bins /bins");
 
 -- Reading each line of a file in Lua (ComputerCraft)
 local file = fs.open("/bins", "r") 
@@ -41,7 +40,7 @@ if file then
         if fs.exists("/.bin/" .. line) then
             runCommand("rm /.bin/" .. line);
 	end
-	runCommand("dg yukkop/h.cc startup/" .. line .. " /.bin/" .. line);
+	runCommand("/.bin/dg.lua yukkop/h.cc startup/" .. line .. " /.bin/" .. line);
     end
     file.close()
 else

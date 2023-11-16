@@ -44,7 +44,7 @@ end
 -- Main
 local programPath = arg[0];
 local options = {} -- allways short
-local args = [...]
+local args = {...}
 
 for i, arg in ipairs(args) do
     if string.sub(arg, 1, 2) == "--" then
