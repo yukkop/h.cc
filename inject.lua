@@ -52,7 +52,7 @@ runCommand("rm /bins");
 if fs.exists("/startup.lua") then
     runCommand("rm /startup.lua");
 end
-runCommand("dg yukkop/h.cc startup/startup.lua /startup.lua");
+runCommand("/.bin/dg.lua yukkop/h.cc startup/startup.lua /startup.lua");
 
 print("Press enter to reboot")
 local input = read()
