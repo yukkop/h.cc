@@ -50,7 +50,9 @@ end
 
 runCommand("rm /bins");
 
-runCommand("rm /startup.lua");
+if fs.exists("/startup.lua" .. line) then
+    runCommand("rm /startup.lua");
+end
 runCommand("dg yukkop/h.cc startup/startup.lua /startup.lua");
 
 print("Press enter to reboot")
