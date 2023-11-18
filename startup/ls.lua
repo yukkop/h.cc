@@ -21,6 +21,8 @@ local function list(dir)
     for _, file in ipairs(files) do
         write(file .. " ")
     end
+
+    print("")
 end
 
 local function listH(dir)
@@ -48,8 +50,8 @@ local function listH(dir)
 end
 
 map = {
-    all = {short = "a", long = "all", description = ""}
-    long = {short = "l", long = "long", description = "more info"}
+    all = {short = "a", long = "all", description = ""},
+    long = {short = "l", long = "long", description = "more info"},
     help = {short = "h", long = "help", description = "not yet"}
 }
 
