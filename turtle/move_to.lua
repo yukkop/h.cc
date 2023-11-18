@@ -1,5 +1,13 @@
 -- Turtle script to build a sphere
 
+
+local function runCommand(command)
+    local success, message = shell.run(command)
+    if not success then
+        print("Command failed: " .. (message or "Unknown error"))
+    end
+end
+
 -- Directions
 local Direction = {
     NORTH = 1, -- -y
@@ -15,7 +23,10 @@ local direction = Direction.NORTH
 
 local pos = {x = 0, y = 0}
 
-local file = io.open("filename.txt", "w")
+if fs.exists("./move_to.log") then
+    runCommand("rm ./move_to.log")
+end
+local file = io.open("move_to.log", "w")
 
 local function log(mess)
    print(mess)
