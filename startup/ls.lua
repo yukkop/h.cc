@@ -49,8 +49,8 @@ end
 
 map = {
     all = {short = "a", long = "all", description = ""}
-    all = {short = "l", long = "long", description = "more info"}
-    all = {short = "h", long = "help", description = "not yet"}
+    long = {short = "l", long = "long", description = "more info"}
+    help = {short = "h", long = "help", description = "not yet"}
 }
 
 -- 
