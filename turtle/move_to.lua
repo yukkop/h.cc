@@ -15,26 +15,35 @@ local direction = Direction.NORTH
 
 local pos = {x = 0, y = 0}
 
+local file = io.open("filename.txt", "w")
+
+local function log(mess)
+   print(mess)
+   if file then
+	file:write(mess .. "\n")
+   end
+end
+
 local function turnLeft(n) 
     for i = 1, n do
-        print("->> LEFT")
+        log("->> LEFT")
         turtle.turnLeft()
     end
 end
 
 local function turnRight(n) 
     for i = 1, n do
-        print("->> RIGHT")
+        log("->> RIGHT")
         turtle.turnRight()
     end
 end
 
 local function rotate(from, to)
-    print("from " .. from .. " to " .. to)
+    log("from " .. from .. " to " .. to)
     if from > to then
 	local dif = from - to 
         if dif == 3 then
-            print("->> LEFT")
+            log("->> LEFT")
 	    turtle.turnLeft()
         end
 	turnRight(dif)
@@ -42,7 +51,7 @@ local function rotate(from, to)
     if from < to then
 	local dif = to - from 
         if dif == 3 then
-            print("->> RIGHT")
+            log("->> RIGHT")
 	    turtle.turnRight()
         end
 	turnLeft(dif)
@@ -53,8 +62,8 @@ end
 
 local function forward(n) 
     for i = 1, n do
-        print("->> FORWARD")
-        turtle.forware()
+        log("->> FORWARD")
+        turtle.forward()
     end
 end
 
@@ -63,26 +72,26 @@ local function moveTo(x, y)
     -- move from pos -> x, y
     xBias = x - pos.x
     yBias = y - pos.y
-    print("bias " .. "{" .. xBias .. ";" .. yBias .. "}" )
+    log("bias " .. "{" .. xBias .. ";" .. yBias .. "}" )
     xDist = math.abs(xBias)
     yDist = math.abs(yBias)
 	
     -- EAST
     if xBias > 0 then
-	print("to EAST")
+	log("to EAST")
         rotate(direction, Direction.EAST)
     else -- WEST
-	print("to WEST")
+	log("to WEST")
         rotate(direction, Direction.WEST)
     end
     forward(xDist)
 
     -- SOUTH
     if yBias > 0 then
-	print("to SOUTH")
+	log("to SOUTH")
         rotate(direction, Direction.SOUTH)
     else -- NORTH
-	print("to NORTH")
+	log("to NORTH")
         rotate(direction, Direction.NORTH)
     end
     forward(yDist)
@@ -93,3 +102,4 @@ local x = tonumber(args[1])
 local y = tonumber(args[2])
 
 moveTo(x, y)
+file:close()
