@@ -45,16 +45,18 @@ local function rotate(from, to)
         if dif == 3 then
             log("->> LEFT")
 	    turtle.turnLeft()
+	else
+	    turnRight(dif)
         end
-	turnRight(dif)
     end
     if from < to then
 	local dif = to - from 
         if dif == 3 then
             log("->> RIGHT")
 	    turtle.turnRight()
+	else
+	    turnLeft(dif)
         end
-	turnLeft(dif)
     end
 
     direction = to
