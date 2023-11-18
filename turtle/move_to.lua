@@ -1,10 +1,10 @@
 -- Turtle script to build a sphere
 
 
-local function runCommand(command)
+local function runcommand(command)
     local success, message = shell.run(command)
     if not success then
-        print("Command failed: " .. (message or "Unknown error"))
+        print("command failed: " .. (message or "unknown error"))
     end
 end
 
