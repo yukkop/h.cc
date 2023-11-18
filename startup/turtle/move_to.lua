@@ -39,13 +39,22 @@ local function rotate(from, to)
         end
 	turnRight(dif)
     end
-    if from > to then
+    if from < to then
 	local dif = to - from 
         if dif == 3 then
             print("->> RIGHT")
 	    turtle.turnRight()
         end
 	turnLeft(dif)
+    end
+
+    direction = to
+end
+
+local function forward(n) 
+    for i = 1, n do
+        print("->> FORWARD")
+        turtle.forware()
     end
 end
 
@@ -66,7 +75,7 @@ local function moveTo(x, y)
 	print("to WEST")
         rotate(direction, Direction.WEST)
     end
-    turtle.forward(xDist)
+    forward(xDist)
 
     -- SOUTH
     if yBias > 0 then
@@ -76,7 +85,7 @@ local function moveTo(x, y)
 	print("to NORTH")
         rotate(direction, Direction.NORTH)
     end
-    turtle.forward(yDist)
+    forward(yDist)
 
 end
 
