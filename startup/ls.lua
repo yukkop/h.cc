@@ -1,14 +1,27 @@
 -- Function to list all elements in a directory
 local function list(dir)
+    local dirs = {}
+    local files = {}
+
     local items = fs.list(dir)
     for _, item in ipairs(items) do
-        print(item)
+        if fs.isDir(fs.combine(dir, item)) then
+            table.insert(dirs, item)
+        else
+            table.insert(files, item)
+        end
+    end
+
+    term.setTextColor(colors.green)
+    for _, dir in ipairs(dirs) do
+        print(dir)
+    end
+    term.setTextColor(colors.white)
+
+    for _, file in ipairs(files) do
+        print(file)
     end
 end
-
-map = {
-    all = {short = 'a', long = "all", description = "show all"}
-}
 
 -- Function to find a string in the map
 local function findInMap(map, target)
