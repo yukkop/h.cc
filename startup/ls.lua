@@ -14,6 +14,30 @@ local function list(dir)
 
     term.setTextColor(colors.green)
     for _, dir in ipairs(dirs) do
+        write(dir .. " ")
+    end
+    term.setTextColor(colors.white)
+
+    for _, file in ipairs(files) do
+        write(file .. " ")
+    end
+end
+
+local function listH(dir)
+    local dirs = {}
+    local files = {}
+
+    local items = fs.list(dir)
+    for _, item in ipairs(items) do
+        if fs.isDir(fs.combine(dir, item)) then
+            table.insert(dirs, item)
+        else
+            table.insert(files, item)
+        end
+    end
+
+    term.setTextColor(colors.green)
+    for _, dir in ipairs(dirs) do
         print(dir)
     end
     term.setTextColor(colors.white)
@@ -23,17 +47,11 @@ local function list(dir)
     end
 end
 
--- Function to find a string in the map
-local function findInMap(map, target)
-    for key, tuple in pairs(map) do
-        for _, value in ipairs(tuple) do
-            if value == target then
-                return key, value
-            end
-        end
-    end
-    return nil, nil -- Not found
-end
+map = {
+    all = {short = "a", long = "all", description = ""}
+    all = {short = "l", long = "long", description = "more info"}
+    all = {short = "h", long = "help", description = "not yet"}
+}
 
 -- 
 local function splitIntoChars(str)
@@ -92,10 +110,15 @@ local function ifShortExist(map, targetValue)
     return false
 end
 
+local dir = shell.dir()
 
-if findInMap(options, "a") == nil then -- --all
+if ifShortExist(options, "a") then -- --all
     print("option a")
 end
 
-local dir = shell.dir()
+if ifShortExist(options, "l") then -- --long
+    listH(dir)
+    return
+end
+
 list(dir)
