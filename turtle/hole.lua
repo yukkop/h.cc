@@ -59,9 +59,9 @@ local function digHole(x, y, z)
 end
 
 local args = {...}
-local x = args[1]
-local y = args[2]
-local z = args[3]
+local x = tonumber(args[1])
+local y = tonumber(args[2])
+local z = tonumber(args[3])
 -- Start the program
 if initialize(x, y, z) then
   digHole(x, y, z)
