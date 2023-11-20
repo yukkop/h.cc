@@ -1,7 +1,7 @@
 -- ComputerCraft script to dig a 5x5x5 hole
 
 -- Initialize the turtle
-local function initialize()
+local function initialize(x, y, z)
   -- Check if the turtle has enough fuel
   if turtle.getFuelLevel() < x * y * z then
     print("Not enough fuel. Add more and restart the script.")
@@ -58,9 +58,11 @@ local function digHole(x, y, z)
   end
 end
 
-
+local args = {...}
+local x = args[1]
+local y = args[2]
+local z = args[3]
 -- Start the program
-if initialize() then
-  digHole()
+if initialize(x, y, z) then
+  digHole(x, y, z)
 end
-
